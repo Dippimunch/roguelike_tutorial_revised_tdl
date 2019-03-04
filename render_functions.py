@@ -49,16 +49,16 @@ def render_all(con, panel, entities, player, game_map, fov_recompute, root_conso
 
             if game_map.fov[x, y]:
                 if wall:
-                    con.draw_char(x, y, None, fg=None, bg=colors.get('light_wall'))
+                    con.draw_char(x, y, None, fg=None, bg=colors.get('brown_2'))
                 else:
-                    con.draw_char(x, y, None, fg=None, bg=colors.get('light_ground'))
+                    con.draw_char(x, y, None, fg=None, bg=colors.get('brown_1'))
 
                 game_map.explored[x][y] = True
             elif game_map.explored[x][y]:
                 if wall:
-                    con.draw_char(x, y, None, fg=None, bg=colors.get('dark_wall'))
+                    con.draw_char(x, y, None, fg=None, bg=colors.get('brown_3'))
                 else:
-                    con.draw_char(x, y, None, fg=None, bg=colors.get('dark_ground'))
+                    con.draw_char(x, y, None, fg=None, bg=colors.get('brown_4'))
 
     # Draw all entities in the list
     entities_in_render_order = sorted(entities, key=lambda x: x.render_order.value)
@@ -79,10 +79,10 @@ def render_all(con, panel, entities, player, game_map, fov_recompute, root_conso
         y += 1
 
     render_bar(panel, 1, 1, bar_width, 'HP', player.fighter.hp, player.fighter.max_hp,
-               colors.get('light_red'), colors.get('darker_red'), colors.get('white'))
+               colors.get('red_3'), colors.get('red_4'), colors.get('red_1'))
 
     panel.draw_str(1, 0, get_names_under_mouse(mouse_coordinates, entities, game_map))
-    panel.draw_str(1, 3, 'Dungeon Level: {0}'.format(game_map.dungeon_level), fg=colors.get('white'), bg=None)
+    panel.draw_str(1, 3, 'Dungeon Level: {0}'.format(game_map.dungeon_level), fg=colors.get('red_1'), bg=None)
 
     root_console.blit(panel, 0, panel_y, screen_width, panel_height, 0, 0)
 
