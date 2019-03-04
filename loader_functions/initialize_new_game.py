@@ -18,7 +18,7 @@ from render_functions import RenderOrder
 
 
 def get_constants():
-    window_title = 'Roguelike Tutorial Revised'
+    window_title = 'Roguelike Tutorial Hack'
 
     screen_width = 80
     screen_height = 50
@@ -68,7 +68,35 @@ def get_constants():
         'light_yellow': (255, 255, 114),
         'light_violet': (184, 114, 255),
         'sky': (0, 191, 255),
-        'darker_orange': (127, 63, 0)
+        'darker_orange': (127, 63, 0),
+
+        # Primary color:
+        'red_0': (170, 57, 57),
+        'red_1': (255,170,170),
+        'red_2': (212,106,106),
+        'red_3': (128, 21, 21),
+        'red_4': ( 85,  0,  0),
+
+        # Secondary color (1):
+        'brown_0': (170,108, 57),
+        'brown_1': (255,209,170),
+        'brown_2': (212,154,106),
+        'brown_3': (128, 69, 21),
+        'brown_4': ( 85, 39,  0),
+
+        # Secondary color (2):
+        'blue_0': ( 34,102,102),
+        'blue_1': (102,153,153),
+        'blue_2': ( 64,127,127),
+        'blue_3': ( 13, 77, 77),
+        'blue_4': (  0, 51, 51),
+
+        # Complement color:
+        'green_0': ( 45,136, 45),
+        'green_1': (136,204,136),
+        'green_2': ( 85,170, 85),
+        'green_3': ( 17,102, 17),
+        'green_4': (  0, 68,  0)
     }
 
     constants = {
@@ -102,7 +130,7 @@ def get_game_variables(constants):
     inventory_component = Inventory(26)
     level_component = Level()
     equipment_component = Equipment()
-    player = Entity(0, 0, '@', (255, 255, 255), 'Player', blocks=True, render_order=RenderOrder.ACTOR,
+    player = Entity(0, 0, '@', constants['colors'].get('blue_1'), 'Player', blocks=True, render_order=RenderOrder.ACTOR,
                     fighter=fighter_component, inventory=inventory_component, level=level_component,
                     equipment=equipment_component)
     entities = [player]
