@@ -54,13 +54,15 @@ def inventory_menu(con, root, header, player, inventory_width, screen_width, scr
 def main_menu(con, root_console, background_image, screen_width, screen_height, colors):
     background_image.blit_2x(root_console, 0, 0)
 
-    title = 'TOMBS OF THE ANCIENT KINGS'
+    title = 'the Hunger'
     center = (screen_width - len(title)) // 2
-    root_console.draw_str(center, screen_height // 2 - 4, title, bg=None, fg=colors.get('light_yellow'))
+    root_console.draw_rect(center, screen_height // 2 - 5, len(title), 3, None, bg=colors.get('green_2'))
+    root_console.draw_str(center, screen_height // 2 - 4, title, fg=colors.get('white'), bg=colors.get('green_2'))
 
-    title = 'By (Your name here)'
+    title = 'A game of Precarity'
     center = (screen_width - len(title)) // 2
-    root_console.draw_str(center, screen_height - 2, title, bg=None, fg=colors.get('light_yellow'))
+    root_console.draw_rect(center - 1, screen_height - 3, len(title) + 1, 3, None, bg=colors.get('green_3'))
+    root_console.draw_str(center, screen_height - 2, title, fg=colors.get('white'), bg=colors.get('green_3'))
 
     menu(con, root_console, '', ['Play a new game', 'Continue last game', 'Quit'], 24, screen_width, screen_height)
 
