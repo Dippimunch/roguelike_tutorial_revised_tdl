@@ -1,4 +1,5 @@
 from enum import Enum
+import random
 
 from game_states import GameStates
 
@@ -49,9 +50,10 @@ def render_all(con, panel, entities, player, game_map, fov_recompute, root_conso
 
             if game_map.fov[x, y]:
                 if wall:
-                    con.draw_char(x, y, None, fg=None, bg=colors.get('brown_2'))
+                    con.draw_char(x, y, 177, fg=colors.get('blue_3'), bg=colors.get('brown_2'))
                 else:
-                    con.draw_char(x, y, None, fg=None, bg=colors.get('brown_1'))
+                    con.draw_char(x, y, floor_var(), fg=colors.get('brown_2'), bg=colors.get('brown_1'))
+                    #print(floor_var())
 
                 game_map.explored[x][y] = True
             elif game_map.explored[x][y]:
@@ -70,7 +72,7 @@ def render_all(con, panel, entities, player, game_map, fov_recompute, root_conso
 
     root_console.blit(con, 0, 0, screen_width, screen_height, 0, 0)
 
-    panel.clear(fg=colors.get('white'), bg=colors.get('black'))
+    panel.clear(fg=colors.get('green_0'), bg=colors.get('blue_4'))
 
     # Print the game messages, one line at a time
     y = 1
@@ -101,6 +103,19 @@ def render_all(con, panel, entities, player, game_map, fov_recompute, root_conso
     elif game_state == GameStates.CHARACTER_SCREEN:
         character_screen(root_console, player, 30, 10, screen_width, screen_height)
 
+def floor_var():
+    tile = 175
+    x = random.randint(1, 10)
+    
+    if x >= 4:
+        tile = 175
+    elif x >= 2:
+        tile = 176
+    else:
+        tile = 177
+
+    print(tile)
+    return tile
 
 def clear_all(con, entities):
     for entity in entities:
