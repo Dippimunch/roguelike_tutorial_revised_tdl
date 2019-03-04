@@ -1,6 +1,7 @@
 from tdl.map import Map
 
 from random import randint
+import numpy as np
 
 from components.ai import BasicMonster
 from components.equipment import EquipmentSlots
@@ -34,6 +35,14 @@ class Rect:
         self.y1 = y
         self.x2 = x + w
         self.y2 = y + h
+        tiles = np.zeros((w, h))
+        self.tiles = tiles
+        #print(tiles[1,1])
+
+        for m in range(x):
+            for n in range(y):
+                #print(tiles)
+                pass
 
     def center(self):
         center_x = int((self.x1 + self.x2) / 2)
